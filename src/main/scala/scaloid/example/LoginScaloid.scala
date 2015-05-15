@@ -17,8 +17,6 @@ class LoginScaloid extends SActivity {
           .<<.wrap.marginRight(40 dip).marginLeft(40 dip).Gravity(Gravity.CENTER_HORIZONTAL).>>.padding(30 dip, 0, 30 dip, 0).background(R.drawable.bg_selector)
       }.<<.Gravity(Gravity.CENTER).>>.padding(30 dip)
     }
-
-    getActionBar.
   }
 
   onCreate {
