@@ -19,16 +19,18 @@ class LoginScaloid extends SActivity {
 //    }.<<.fill.>>
 //  }
 
-  onCreate {
+  var mEmail: SEditText = null
+  var mPassword: SEditText = null
 
+  onCreate {
     contentView = new SFrameLayout {
       SImageView().<<.fill.>>.scaleType(ScaleType.CENTER_CROP).imageResource(R.drawable.nyc)
-      this += new SVerticalLayout {
-        SImageView().<<.wrap.marginBottom(40 dip).>>.imageResource(R.drawable.logo).focusableInTouchMode(true)
-        var mEmail = SEditText().<<.margin(10 dip).>>.inputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS).hint(R.string.email)
-        var mPassword = SEditText().<<.margin(10 dip).>>.inputType(InputType.TYPE_TEXT_VARIATION_PASSWORD).hint(R.string.password)
-        SButton(R.string.login, signin(mEmail.text.toString(), mPassword.text.toString())).<<.wrap.>>.padding(30 dip, 0, 30 dip, 0).background(R.drawable.bg_selector)
-      }.padding(30 dip)
+      this += new SRelativeLayout {
+        mEmail = SEditText().<<.centerInParent.margin(10 dip).>>.inputType(TEXT_EMAIL_ADDRESS).hint(R.string.email)
+        mPassword = SEditText().<<.margin(10 dip).below(mEmail).>>.inputType(TEXT_PASSWORD).hint(R.string.password)
+        SButton(R.string.login, signin(mEmail.text.toString, mPassword.text.toString)).<<.wrap.centerHorizontal.below(mPassword).>>.padding(30 dip, 0, 30 dip, 0).background(R.drawable.bg_selector)
+        SImageView().<<.wrap.centerHorizontal.marginBottom(30 dip).above(mEmail).>>.imageResource(R.drawable.logo)
+      }.<<.fill.>>.padding(30 dip)
     }
   }
 
@@ -39,22 +41,6 @@ class LoginScaloid extends SActivity {
   onStop {
     toast("We're stopped")
   }
-
-//  onCreate {
-//
-//    contentView = new SVerticalLayout {
-//      STextView("Sign in").textSize(24.5 sp).<<.marginBottom(25 dip).>>
-//      STextView("ID")
-//      val userId = SEditText()
-//      STextView("Password")
-//      val pass = SEditText() inputType TEXT_PASSWORD
-//      SButton("Sign in", signin(userId.text.toString(), pass.text.toString()))
-//      this += new SLinearLayout {
-//        SButton("Help", openUri("http://help.url"))
-//        SButton("Sign up", openUri("http://signup.uri")).gravity(0)
-//      }.wrap
-//    }.padding(20 dip)
-//  }
 
   def signin(uname:String, pass:String) = {
     toast("Sign in " + uname + ", " + pass)
