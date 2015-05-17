@@ -5,4 +5,6 @@
 	<string name="password">Password</string>
 	<string name="email">Email</string>
 	<string name="login">Login</string>
+	<string name="busy_login">Logging in...</string>
+	<string name="dummy_login_url">http://urlecho.appspot.com/echo?status=200&amp;Content-Type=text%2Fhtml&amp;body=Successful%20login!</string>
 </resources>
