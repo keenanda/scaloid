@@ -39,11 +39,12 @@ class LoginScaloid extends SActivity {
   }
 
   def loginPressed(uname:String, pass:String) = {
-    val dlg = ProgressDialog.show(this, null, getString(R.string.busy_login), true)
+    val dlg = ProgressDialog.show(this, null, getString(R.string.busy_login), true, true)
 
     Future {
       val result = performLogin
       dlg.dismiss()
+      toast(result)
     }
   }
 

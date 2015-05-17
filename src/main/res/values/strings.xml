@@ -7,4 +7,15 @@
 	<string name="login">Login</string>
 	<string name="busy_login">Logging in...</string>
 	<string name="dummy_login_url">http://urlecho.appspot.com/echo?status=200&amp;Content-Type=text%2Fhtml&amp;body=Successful%20login!</string>
+
+	<string name="sort_by">Sort by:</string>
+	<string name="due_date">Due date</string>
+	<string name="priority">Priority</string>
+	<string name="add_item">Add Item</string>
+	<string name="todo_title">Task List</string>
+
+	<array name="sort_options">
+		<item>@string/due_date</item>
+		<item>@string/priority</item>
+	</array>
 </resources>
