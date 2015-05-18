@@ -132,8 +132,8 @@ public class TodoListActivity extends ListActivity {
             name.setText(getItem(position).getTaskName());
             TextView dueDate = (TextView)convertView.findViewById(R.id.due_date);
             dueDate.setText(SimpleDateFormat.getDateInstance().format(getItem(position).getDueDate()));
-            TextView priority = (TextView)convertView.findViewById(R.id.priority);
-            priority.setText("" + getItem(position).getPriority());
+            View priority = convertView.findViewById(R.id.priority);
+            priority.getBackground().setLevel(getItem(position).getPriority());
             return convertView;
         }
     }

@@ -6,4 +6,9 @@
     <color name="gray">#999999</color>
     <color name="background">#5b6cac</color>
     <color name="darken">#33000000</color>
+    <color name="color_priority_0">#ffffff</color>
+    <color name="color_priority_1">#eeeeee</color>
+    <color name="color_priority_2">#dddddd</color>
+    <color name="color_priority_3">#cccccc</color>
+    <color name="color_priority_4">#bbbbbb</color>
 </resources>
