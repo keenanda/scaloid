@@ -22,7 +22,7 @@ android {
     buildToolsVersion "22.0.1"
 	
     defaultConfig {
-        minSdkVersion 10
+        minSdkVersion 11
         targetSdkVersion 16
         versionCode 1
         versionName "1.0"
@@ -43,5 +43,7 @@ android {
 
 dependencies {
     compile "org.scala-lang:scala-library:2.11.6"
-	compile "org.scaloid:scaloid_2.11:4.0-RC1+"
+    compile "org.scaloid:scaloid_2.11:4.0-RC1+"
+    compile 'com.google.guava:guava:18.0'
+    compile files ('libs/volley.jar')
 }

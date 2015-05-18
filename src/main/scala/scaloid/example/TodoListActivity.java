@@ -11,25 +11,32 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
+
 import java.text.SimpleDateFormat;
-import java.util.List;
+import java.util.Arrays;
+import java.util.Comparator;
 
 import scaloid.example.data.TodoManager;
 
 public class TodoListActivity extends ListActivity {
     private TodoListAdapter mAdapter;
+    private Spinner mSortSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_todolist);
+        mSortSpinner = (Spinner)findViewById(R.id.sort_spinner);
+        mSortSpinner.setOnItemSelectedListener(sortChanged);
+
         setupActionBar();
-        setupAdapter();
     }
 
     @Override
@@ -71,7 +78,27 @@ public class TodoListActivity extends ListActivity {
     }
 
     private void setupAdapter() {
-        mAdapter = new TodoListAdapter(this, TodoManager.getTodoList());
+        TodoTask[] arr = new TodoTask[TodoManager.getTodoList().size()];
+        TodoManager.getTodoList().toArray(arr);
+        int idx = mSortSpinner.getSelectedItemPosition();
+        if (idx == 0) {
+            Arrays.sort(arr, new Comparator<TodoTask>() {
+                @Override
+                public int compare(TodoTask lhs, TodoTask rhs) {
+                    return lhs.getDueDate().compareTo(rhs.getDueDate());
+                }
+            });
+        }
+        else if (idx == 1) {
+            Arrays.sort(arr, new Comparator<TodoTask>() {
+                @Override
+                public int compare(TodoTask lhs, TodoTask rhs) {
+                    return Integer.valueOf(lhs.getPriority()).compareTo(rhs.getPriority());
+                }
+            });
+        }
+
+        mAdapter = new TodoListAdapter(this, arr);
         setListAdapter(mAdapter);
     }
 
@@ -80,8 +107,19 @@ public class TodoListActivity extends ListActivity {
         startActivity(intent);
     }
 
+    private AdapterView.OnItemSelectedListener sortChanged = new AdapterView.OnItemSelectedListener() {
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            setupAdapter();
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+        }
+    };
+
     private static class TodoListAdapter extends ArrayAdapter<TodoTask> {
-        public TodoListAdapter(Context context, List<TodoTask> taskList) {
+        public TodoListAdapter(Context context, TodoTask[] taskList) {
             super(context, R.layout.todo_listitem, taskList);
         }
 

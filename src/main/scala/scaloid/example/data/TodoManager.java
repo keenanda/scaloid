@@ -7,9 +7,6 @@ import java.util.List;
 
 import scaloid.example.TodoTask;
 
-/**
- * Created by davek on 5/17/15.
- */
 public class TodoManager {
 
     private static List<TodoTask> mTodoList = new ArrayList<TodoTask>();
