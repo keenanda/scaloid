@@ -15,8 +15,9 @@ public class TodoManager {
     private static List<TodoTask> mTodoList = new ArrayList<TodoTask>();
 
     static {
-        mTodoList.add(new TodoTask("Grocery shopping", 8, daysFromToday(3)));
-        mTodoList.add(new TodoTask("Mow lawn", 6, daysFromToday(5)));
+        mTodoList.add(new TodoTask("Grocery shopping", 2, daysFromToday(3)));
+        mTodoList.add(new TodoTask("Mow lawn", 1, daysFromToday(5)));
+        mTodoList.add(new TodoTask("Do taxes", 3, daysFromToday(2)));
     }
 
     public static List<TodoTask> getTodoList() {
@@ -25,6 +26,14 @@ public class TodoManager {
 
     public static void addItem(TodoTask t) {
         mTodoList.add(t);
+    }
+
+    public static TodoTask getTask(int id) {
+        for (TodoTask t : mTodoList) {
+            if (t.getId() == id)
+                return t;
+        }
+        return null;
     }
 
     private static Date daysFromToday(int days) {

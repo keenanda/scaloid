@@ -7,11 +7,15 @@ public class TodoTask {
     private int mPriority;
     private Date mDueDate;
     private boolean mCompleted;
+    private int mId;
+
+    private static int mIdCounter = 0;
 
     public TodoTask(String taskName, int priority, Date dueDate) {
         mTaskName = taskName;
         mPriority = priority;
         mDueDate = dueDate;
+        mId = mIdCounter++;
     }
 
     public String getTaskName() {
@@ -44,5 +48,9 @@ public class TodoTask {
 
     public void setCompleted(boolean b) {
         mCompleted = b;
+    }
+
+    public int getId() {
+        return mId;
     }
 }

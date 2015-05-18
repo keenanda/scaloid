@@ -3,13 +3,16 @@ package scaloid.example;
 import android.app.ActionBar;
 import android.app.ListActivity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -18,6 +21,8 @@ import java.util.List;
 import scaloid.example.data.TodoManager;
 
 public class TodoListActivity extends ListActivity {
+    private TodoListAdapter mAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,13 +46,38 @@ public class TodoListActivity extends ListActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle presses on the action bar items
+        switch (item.getItemId()) {
+            case R.id.action_newtask:
+                showNewTask();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+        TodoTask task = mAdapter.getItem(position);
+        Intent intent = TodoItemActivity.newEditIntent(this, task.getId());
+        startActivity(intent);
+    }
+
     private void setupActionBar() {
         ActionBar ab = getActionBar();
         ab.setTitle(R.string.todo_title);
     }
 
     private void setupAdapter() {
-        setListAdapter(new TodoListAdapter(this, TodoManager.getTodoList()));
+        mAdapter = new TodoListAdapter(this, TodoManager.getTodoList());
+        setListAdapter(mAdapter);
+    }
+
+    private void showNewTask() {
+        Intent intent = TodoItemActivity.newCreateIntent(this);
+        startActivity(intent);
     }
 
     private static class TodoListAdapter extends ArrayAdapter<TodoTask> {

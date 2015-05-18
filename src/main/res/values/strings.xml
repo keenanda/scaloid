@@ -11,11 +11,23 @@
 	<string name="sort_by">Sort by:</string>
 	<string name="due_date">Due date</string>
 	<string name="priority">Priority</string>
+	<string name="task_name">Task name</string>
 	<string name="add_item">Add Item</string>
 	<string name="todo_title">Task List</string>
+	<string name="create_task">Create Task</string>
+    <string name="edit_task">Edit Task</string>
+	<string name="save">Save</string>
 
 	<array name="sort_options">
 		<item>@string/due_date</item>
 		<item>@string/priority</item>
 	</array>
+
+	<array name="priorities">
+		<item>Low</item>
+		<item>Medium</item>
+		<item>High</item>
+		<item>Required</item>
+	</array>
+
 </resources>
