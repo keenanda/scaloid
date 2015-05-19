@@ -7,7 +7,7 @@ import android.widget._
 import org.scaloid.common._
 import scaloid.example.data.{TodoTaskScaloid, TodoManagerScaloid}
 
-class TodoListScaloid extends SActivity {
+class TodoListSActivity extends SActivity {
 
   var sortBy:SSpinner = null
   var listView:SListView = null
@@ -46,6 +46,16 @@ class TodoListScaloid extends SActivity {
     true
   }
 
+  override def onOptionsItemSelected(item: MenuItem): Boolean = {
+    item.getItemId match {
+      case R.id.action_newtask =>
+        showNewTask
+        return true
+      case _ =>
+        return super.onOptionsItemSelected(item)
+    }
+  }
+
   def sortList = {
 
     taskList = TodoManagerScaloid.getTodoList
@@ -57,6 +67,10 @@ class TodoListScaloid extends SActivity {
     }
 
     listAdapter.notifyDataSetChanged()
+  }
+
+  def showNewTask = {
+    startActivity(SIntent[TodoItemSActivity])
   }
 
   class TodoTaskAdapter extends BaseAdapter {

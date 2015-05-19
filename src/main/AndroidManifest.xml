@@ -24,8 +24,10 @@
         <activity android:name="LoginScaloid"
             android:label="@string/app_name">
         </activity>
-        <activity android:name="TodoListScaloid"
+        <activity android:name="TodoListSActivity"
             android:label="@string/todo_title">
+        </activity>
+        <activity android:name="TodoItemSActivity">
         </activity>
 
     </application>

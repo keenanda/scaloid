@@ -37,7 +37,7 @@ class LoginScaloid extends SActivity {
       val result = performLogin
       dlg.dismiss()
       toast(result)
-      startActivity(SIntent[TodoListScaloid])
+      startActivity(SIntent[TodoListSActivity])
     }
   }
 
