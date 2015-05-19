@@ -18,6 +18,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -29,6 +30,8 @@ public class TodoListActivity extends ListActivity {
     private TodoListAdapter mAdapter;
     private Spinner mSortSpinner;
 
+    private static DateFormat mDateFormat = DateFormat.getDateInstance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,8 +41,6 @@ public class TodoListActivity extends ListActivity {
         mSortSpinner.setOnItemSelectedListener(sortChanged);
 
         setupActionBar();
-        int x = R.dimen.layout_padding;
-        int pad = getResources().getDimensionPixelSize(x);
     }
 
     @Override
@@ -134,7 +135,7 @@ public class TodoListActivity extends ListActivity {
             TextView name = (TextView)convertView.findViewById(R.id.task_name);
             name.setText(getItem(position).getTaskName());
             TextView dueDate = (TextView)convertView.findViewById(R.id.due_date);
-            dueDate.setText(SimpleDateFormat.getDateInstance().format(getItem(position).getDueDate()));
+            dueDate.setText(mDateFormat.format(getItem(position).getDueDate()));
             View priority = convertView.findViewById(R.id.priority);
             priority.getBackground().setLevel(getItem(position).getPriority());
             return convertView;
