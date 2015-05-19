@@ -4,8 +4,8 @@ import java.text.{SimpleDateFormat, DateFormat}
 
 import android.view._
 import android.widget._
+import com.spindance.demo.scala.data.{TodoSTask, TodoSManager}
 import org.scaloid.common._
-import scaloid.example.data.{TodoTaskScaloid, TodoManagerScaloid}
 
 class TodoListSActivity extends SActivity {
 
@@ -14,7 +14,7 @@ class TodoListSActivity extends SActivity {
   var listAdapter: TodoTaskAdapter = null
 
   private val mDateFormat: DateFormat = DateFormat.getDateInstance
-  private var taskList: Array[TodoTaskScaloid] = Array()
+  private var taskList: Array[TodoSTask] = Array()
 
   onCreate {
 
@@ -58,7 +58,7 @@ class TodoListSActivity extends SActivity {
 
   def sortList = {
 
-    taskList = TodoManagerScaloid.getTodoList
+    taskList = TodoSManager.getTodoList
     if (sortBy.getSelectedItemPosition == 0) {
       taskList = taskList.sortBy(_.dueDate)
     }
