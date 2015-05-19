@@ -2,7 +2,7 @@ package scaloid.example
 
 import java.text.{SimpleDateFormat, DateFormat}
 
-import android.view.{LayoutInflater, ViewGroup, View, Gravity}
+import android.view._
 import android.widget._
 import org.scaloid.common._
 import scaloid.example.data.{TodoTaskScaloid, TodoManagerScaloid}
@@ -39,6 +39,11 @@ class TodoListScaloid extends SActivity {
 
   onResume {
     sortList
+  }
+
+  override def onCreateOptionsMenu(menu: Menu) = {
+    getMenuInflater.inflate(R.menu.todolist_menu, menu)
+    true
   }
 
   def sortList = {

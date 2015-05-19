@@ -30,14 +30,6 @@ class LoginScaloid extends SActivity {
     }
   }
 
-  onCreate {
-    toast("Hey, we're created!")
-  }
-
-  onStop {
-    toast("We're stopped")
-  }
-
   def loginPressed(uname:String, pass:String) = {
     val dlg = ProgressDialog.show(this, null, getString(R.string.busy_login), true, true)
 
