@@ -1,11 +1,12 @@
-package scaloid.example
+package com.spindance.demo.scala.activity
 
-import java.text.{SimpleDateFormat, DateFormat}
+import java.text.DateFormat
 
 import android.view._
 import android.widget._
-import com.spindance.demo.scala.data.{TodoSTask, TodoSManager}
+import com.spindance.demo.scala.data.{TodoSManager, TodoSTask}
 import org.scaloid.common._
+import scaloid.example.R
 
 class TodoListSActivity extends SActivity {
 

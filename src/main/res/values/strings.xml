@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="red">Red alert!</string>
-	<string name="app_name">Hello Scaloid! for gradle</string>
+	<string name="app_name">SpinDance scaloid demo</string>
 	<string name="password">Password</string>
 	<string name="email">Email</string>
 	<string name="login">Login</string>

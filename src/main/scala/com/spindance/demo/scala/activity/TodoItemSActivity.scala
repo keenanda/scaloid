@@ -1,6 +1,7 @@
-package scaloid.example
+package com.spindance.demo.scala.activity
 
 import org.scaloid.common._
+import scaloid.example.R
 
 class TodoItemSActivity extends SActivity {
 

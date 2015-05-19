@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application android:label="@string/app_name" >
-        <activity android:name="LaunchDemoSActivity"
+        <activity android:name="com.spindance.demo.scala.activity.LaunchDemoSActivity"
                   android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,13 +21,13 @@
         </activity>
         <activity android:name="com.spindance.demo.activity.TodoItemActivity">
         </activity>
-        <activity android:name="LoginScaloid"
+        <activity android:name="com.spindance.demo.scala.activity.LoginSActivity"
             android:label="@string/app_name">
         </activity>
-        <activity android:name="TodoListSActivity"
+        <activity android:name="com.spindance.demo.scala.activity.TodoListSActivity"
             android:label="@string/todo_title">
         </activity>
-        <activity android:name="TodoItemSActivity">
+        <activity android:name="com.spindance.demo.scala.activity.TodoItemSActivity">
         </activity>
 
     </application>

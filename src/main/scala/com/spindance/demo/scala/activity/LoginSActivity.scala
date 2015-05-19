@@ -1,21 +1,16 @@
-package scaloid.example
-
-import java.util.concurrent.{ThreadPoolExecutor, LinkedBlockingQueue, TimeUnit}
+package com.spindance.demo.scala.activity
 
 import android.app.ProgressDialog
-import android.os.AsyncTask
 import android.view.Gravity
 import android.widget.ImageView.ScaleType
 import org.scaloid.common._
-import scala.concurrent._
+import scaloid.example.R
 
-object AndroidExecutionContext {
-  implicit val exec = ExecutionContext.fromExecutor(AsyncTask.THREAD_POOL_EXECUTOR)
-}
+import scala.concurrent.Future
+import AndroidExecutionContext.exec
 
-import AndroidExecutionContext._
 
-class LoginScaloid extends SActivity {
+class LoginSActivity extends SActivity {
 
   onCreate {
     contentView = new SFrameLayout {
@@ -36,13 +31,12 @@ class LoginScaloid extends SActivity {
     Future {
       val result = performLogin
       dlg.dismiss()
-      toast(result)
       startActivity(SIntent[TodoListSActivity])
     }
   }
 
   def performLogin: String = {
-    Thread.sleep(1000)
+    Thread.sleep(1000)   // fake some network delay
     scala.io.Source.fromURL(getString(R.string.dummy_login_url)).mkString
   }
 }

@@ -1,4 +1,4 @@
-package scaloid.example
+package com.spindance.demo.scala.activity
 
 import com.spindance.demo.activity.LoginActivity
 import org.scaloid.common._
@@ -18,7 +18,7 @@ class LaunchDemoSActivity extends SActivity {
   }
 
   def loginScala = {
-    startActivity(SIntent[LoginScaloid])
+    startActivity(SIntent[LoginSActivity])
   }
 }
 
