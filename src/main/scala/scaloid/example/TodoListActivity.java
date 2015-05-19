@@ -23,6 +23,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 import scaloid.example.data.TodoManager;
+import scaloid.example.data.TodoTask;
 
 public class TodoListActivity extends ListActivity {
     private TodoListAdapter mAdapter;
@@ -37,6 +38,8 @@ public class TodoListActivity extends ListActivity {
         mSortSpinner.setOnItemSelectedListener(sortChanged);
 
         setupActionBar();
+        int x = R.dimen.layout_padding;
+        int pad = getResources().getDimensionPixelSize(x);
     }
 
     @Override

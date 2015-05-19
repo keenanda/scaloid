@@ -1,4 +1,4 @@
-package scaloid.example;
+package scaloid.example.data;
 
 import java.util.Date;
 

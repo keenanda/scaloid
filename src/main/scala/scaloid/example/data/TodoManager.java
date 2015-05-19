@@ -5,8 +5,6 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
-import scaloid.example.TodoTask;
-
 public class TodoManager {
 
     private static List<TodoTask> mTodoList = new ArrayList<TodoTask>();
