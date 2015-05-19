@@ -25,7 +25,7 @@ import java.util.Comparator;
 import com.spindance.demo.data.TodoManager;
 import com.spindance.demo.data.TodoTask;
 
-import scaloid.example.R;
+import com.spindance.demo.R;
 
 public class TodoListActivity extends ListActivity {
     private TodoListAdapter mAdapter;

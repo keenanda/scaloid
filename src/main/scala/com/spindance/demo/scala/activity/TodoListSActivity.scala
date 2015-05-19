@@ -6,7 +6,7 @@ import android.view._
 import android.widget._
 import com.spindance.demo.scala.data.{TodoSManager, TodoSTask}
 import org.scaloid.common._
-import scaloid.example.R
+import com.spindance.demo.R
 
 class TodoListSActivity extends SActivity {
 

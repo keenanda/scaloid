@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -16,7 +15,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import scaloid.example.R;
+import com.spindance.demo.R;
 
 public class LoginActivity extends Activity {
     private EditText mEmailText;
@@ -52,7 +51,6 @@ public class LoginActivity extends Activity {
                     @Override
                     public void onResponse(String response) {
                         dlg.dismiss();
-                        Toast.makeText(getBaseContext(), response, Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(LoginActivity.this, TodoListActivity.class));
                         finish();
                     }

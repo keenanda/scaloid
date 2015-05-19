@@ -22,7 +22,7 @@ import java.util.GregorianCalendar;
 import com.spindance.demo.data.TodoManager;
 import com.spindance.demo.data.TodoTask;
 
-import scaloid.example.R;
+import com.spindance.demo.R;
 
 public class TodoItemActivity extends Activity {
     public static final String EXTRA_TASK = "TodoItem.Task";

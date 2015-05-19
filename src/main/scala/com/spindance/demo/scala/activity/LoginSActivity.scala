@@ -3,8 +3,8 @@ package com.spindance.demo.scala.activity
 import android.app.ProgressDialog
 import android.view.Gravity
 import android.widget.ImageView.ScaleType
+import com.spindance.demo.R
 import org.scaloid.common._
-import scaloid.example.R
 
 import scala.concurrent.Future
 import AndroidExecutionContext.exec

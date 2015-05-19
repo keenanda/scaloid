@@ -2,8 +2,6 @@ package com.spindance.demo.scala.data
 
 import java.util.Date
 
-import com.spindance.demo.scala.data.TodoSTask
-
 import scala.collection.mutable.ArrayBuffer
 
 object TodoSManager {
