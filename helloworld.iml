@@ -92,6 +92,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="scala-reflect-2.11.6" level="project" />
     <orderEntry type="library" exported="" name="scaloid_2.11-4.0-RC1" level="project" />
+    <orderEntry type="library" exported="" name="volley" level="project" />
     <orderEntry type="library" exported="" name="scala-library-2.11.6" level="project" />
   </component>
 </module>

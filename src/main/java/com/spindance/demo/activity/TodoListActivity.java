@@ -1,4 +1,4 @@
-package scaloid.example;
+package com.spindance.demo.activity;
 
 import android.app.ActionBar;
 import android.app.ListActivity;
@@ -19,12 +19,13 @@ import android.widget.TextView;
 
 
 import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Comparator;
 
-import scaloid.example.data.TodoManager;
-import scaloid.example.data.TodoTask;
+import com.spindance.demo.data.TodoManager;
+import com.spindance.demo.data.TodoTask;
+
+import scaloid.example.R;
 
 public class TodoListActivity extends ListActivity {
     private TodoListAdapter mAdapter;

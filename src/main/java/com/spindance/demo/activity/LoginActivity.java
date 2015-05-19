@@ -1,9 +1,7 @@
-package scaloid.example;
+package com.spindance.demo.activity;
 
 import android.app.Activity;
-import android.app.DownloadManager;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -18,7 +16,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-public class LoginJava extends Activity {
+import scaloid.example.R;
+
+public class LoginActivity extends Activity {
     private EditText mEmailText;
     private EditText mPasswordText;
     private Button mLoginButton;
@@ -53,7 +53,7 @@ public class LoginJava extends Activity {
                     public void onResponse(String response) {
                         dlg.dismiss();
                         Toast.makeText(getBaseContext(), response, Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(LoginJava.this, TodoListActivity.class));
+                        startActivity(new Intent(LoginActivity.this, TodoListActivity.class));
                         finish();
                     }
                 },

@@ -1,8 +1,9 @@
 package scaloid.example
 
+import com.spindance.demo.activity.LoginActivity
 import org.scaloid.common._
 
-class HelloScaloid extends SActivity {
+class LaunchDemoSActivity extends SActivity {
 
   onCreate {
     contentView = new SVerticalLayout {
@@ -13,7 +14,7 @@ class HelloScaloid extends SActivity {
   }
 
   def loginJava = {
-    startActivity(SIntent[LoginJava])
+    startActivity(SIntent[LoginActivity])
   }
 
   def loginScala = {

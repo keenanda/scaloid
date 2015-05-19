@@ -1,4 +1,4 @@
-package scaloid.example;
+package com.spindance.demo.activity;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -19,8 +19,10 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import scaloid.example.data.TodoManager;
-import scaloid.example.data.TodoTask;
+import com.spindance.demo.data.TodoManager;
+import com.spindance.demo.data.TodoTask;
+
+import scaloid.example.R;
 
 public class TodoItemActivity extends Activity {
     public static final String EXTRA_TASK = "TodoItem.Task";

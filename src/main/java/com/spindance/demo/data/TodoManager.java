@@ -1,4 +1,4 @@
-package scaloid.example.data;
+package com.spindance.demo.data;
 
 import java.util.ArrayList;
 import java.util.Collections;
