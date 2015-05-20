@@ -1,6 +1,6 @@
 package com.spindance.demo.scala.activity
 
-import java.text.{SimpleDateFormat, DateFormat}
+import java.text.DateFormat
 import java.util.{Calendar, GregorianCalendar, Date}
 
 import android.app.DatePickerDialog
@@ -19,10 +19,9 @@ class TodoItemSActivity extends SActivity {
   private var mTaskName: SEditText = null
 
   private val mDateFormat: DateFormat = DateFormat.getDateInstance
+  private var mTask:TodoSTask = null
 
   onCreate {
-    setTitle(R.string.create_task)
-
     val pad: Int = getResources.getDimensionPixelSize(R.dimen.layout_padding)
 
     contentView = new SFrameLayout {
@@ -44,6 +43,10 @@ class TodoItemSActivity extends SActivity {
 
     val adapter = SArrayAdapter(getResources.getStringArray(R.array.priorities)).dropDownStyle(_.textSize(20 dip).padding(15 dip))
     mPrioritySpinner.setAdapter(adapter)
+
+    mTask = TodoSManager.getTask(getIntent.getIntExtra("task_id", -1))
+
+    initView
   }
 
 
@@ -57,12 +60,30 @@ class TodoItemSActivity extends SActivity {
 
   def savePressed = {
     if (!TextUtils.isEmpty(mTaskName.getText.toString)) {
-      TodoSManager.addTask(TodoSTask(mTaskName.getText.toString, mPrioritySpinner.getSelectedItemPosition, mDateFormat.parse(mDueDateButton.getText.toString)))
+      if (mTask == null) {
+        TodoSManager.addTask(TodoSTask(mTaskName.getText.toString, mPrioritySpinner.getSelectedItemPosition, mDateFormat.parse(mDueDateButton.getText.toString)))
+      }
+      else {
+        mTask.dueDate = mDateFormat.parse(mDueDateButton.getText.toString)
+        mTask.priority = mPrioritySpinner.getSelectedItemPosition
+        mTask.taskName = mTaskName.getText.toString
+      }
     }
     finish
   }
 
-  var dateSelected: OnDateSetListener =  new OnDateSetListener {
+  private def initView = {
+    if (mTask != null) {
+      setTitle(R.string.edit_task)
+      mTaskName.setText(mTask.taskName)
+      mPrioritySpinner.setSelection(mTask.priority)
+      mDueDateButton.setText(mDateFormat.format(mTask.dueDate))
+    } else {
+      setTitle(R.string.create_task)
+    }
+  }
+
+  private val dateSelected: OnDateSetListener =  new OnDateSetListener {
     override def onDateSet(view: DatePicker, year: Int, monthOfYear: Int, dayOfMonth: Int): Unit = {
       val cal: GregorianCalendar = new GregorianCalendar
       cal.set(Calendar.YEAR, year)

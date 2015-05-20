@@ -21,6 +21,15 @@ object TodoSManager {
     taskList += task
   }
 
+  def getTask(id: Int): TodoSTask = {
+    for (t <- taskList) {
+      if (t.id == id) {
+        return t
+      }
+    }
+    null
+  }
+
   private def daysFromToday(days: Int): Date = {
     val dt: Long = System.currentTimeMillis + 1000 * 60 * 60 * 24 * days
     return new Date(dt)

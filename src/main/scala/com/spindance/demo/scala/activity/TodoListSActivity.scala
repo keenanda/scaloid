@@ -2,13 +2,15 @@ package com.spindance.demo.scala.activity
 
 import java.text.DateFormat
 
+import android.content.Intent
 import android.view._
+import android.widget.AdapterView.OnItemClickListener
 import android.widget._
 import com.spindance.demo.scala.data.{TodoSManager, TodoSTask}
 import org.scaloid.common._
 import com.spindance.demo.R
 
-class TodoListSActivity extends SActivity {
+class TodoListSActivity extends SActivity with OnItemClickListener {
 
   var mSortBy:SSpinner = null
   var mListView:SListView = null
@@ -19,7 +21,7 @@ class TodoListSActivity extends SActivity {
 
   onCreate {
 
-    val pad:Int = getResources.getDimensionPixelSize(R.dimen.layout_padding)
+    val pad: Int = getResources.getDimensionPixelSize(R.dimen.layout_padding)
 
     contentView = new SVerticalLayout {
       this += new SLinearLayout {
@@ -36,6 +38,7 @@ class TodoListSActivity extends SActivity {
 
     mListAdapter = new TodoTaskAdapter
     mListView.setAdapter(mListAdapter)
+    mListView.setOnItemClickListener(this)
   }
 
   onResume {
@@ -74,6 +77,11 @@ class TodoListSActivity extends SActivity {
     startActivity(SIntent[TodoItemSActivity])
   }
 
+  def onItemClick(parent: AdapterView[_], view: View, position: Int, id: Long) {
+    val task_id = mTaskList(position).id
+    new Intent().put(task_id).start[TodoItemSActivity]
+  }
+
   class TodoTaskAdapter extends BaseAdapter {
 
     def getView(position:Int, convertView: View, parent: ViewGroup): View = {
@@ -85,6 +93,15 @@ class TodoListSActivity extends SActivity {
       result.findViewById(R.id.due_date).asInstanceOf[TextView].setText(mDateFormat.format(mTaskList(position).dueDate))
       result.findViewById(R.id.priority).getBackground.setLevel(mTaskList(position).priority)
       result
+
+//    //  implicit val ctx = parent.getContext
+//      val view = new SLinearLayout {
+//        val name = STextView("Grocery shopping").<<(0 dip, WRAP_CONTENT).>>.<<.Weight(5.0f).>>.textColor(R.color.black).gravity(Gravity.CENTER_VERTICAL).lines(2).padding(0, 10 dip, 0, 10 dip).textSize(20 sp)
+//        val due = STextView("June 6, 2015").<<(0 dip, WRAP_CONTENT).>>.<<.Weight(2.0f).Gravity(Gravity.CENTER).>>.textColor(R.color.black)
+//        due.setText(mDateFormat.format(mTaskList(position).dueDate))
+//        name.setText(mTaskList(position).taskName)
+//      }.padding(10 dip).backgroundResource(R.drawable.listitem_selector)
+//      view
     }
 
     def getCount(): Int = mTaskList.size
