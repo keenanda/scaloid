@@ -67,7 +67,7 @@ class TodoListSActivity extends SActivity with OnItemClickListener {
       mTaskList = mTaskList.sortBy(_.dueDate)
     }
     else {
-      mTaskList = mTaskList.sortBy(_.priority)
+      mTaskList = mTaskList.sortWith((lhs, rhs) => lhs.priority > rhs.priority)
     }
 
     mListAdapter.notifyDataSetChanged()

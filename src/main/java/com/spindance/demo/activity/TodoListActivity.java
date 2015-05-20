@@ -98,7 +98,7 @@ public class TodoListActivity extends ListActivity {
             Arrays.sort(arr, new Comparator<TodoTask>() {
                 @Override
                 public int compare(TodoTask lhs, TodoTask rhs) {
-                    return Integer.valueOf(lhs.getPriority()).compareTo(rhs.getPriority());
+                    return Integer.valueOf(rhs.getPriority()).compareTo(lhs.getPriority());
                 }
             });
         }

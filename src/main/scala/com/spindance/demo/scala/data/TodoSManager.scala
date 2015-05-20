@@ -9,8 +9,8 @@ import scala.collection.mutable.ArrayBuffer
  */
 object TodoSManager {
   // init with some dummy data
-  var taskList:ArrayBuffer[TodoSTask] = ArrayBuffer(TodoSTask("Mow lawn", 1, daysFromToday(4)),
-                                              TodoSTask("Do taxes", 3, daysFromToday(2)),
+  var taskList:ArrayBuffer[TodoSTask] = ArrayBuffer(TodoSTask("Mow lawn", 1, daysFromToday(2)),
+                                              TodoSTask("Do taxes", 3, daysFromToday(4)),
                                               TodoSTask("Grocery shopping", 2, daysFromToday(3)))
 
   def getTodoList: Array[TodoSTask] = {

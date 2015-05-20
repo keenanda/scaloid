@@ -58,12 +58,6 @@ public class TodoItemActivity extends Activity {
         initView();
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
-
-        Bundle b = getIntent().getExtras();
-        String buf = "";
-        for (String k : b.keySet()) {
-            buf = buf + k;
-        }
     }
 
     @Override
