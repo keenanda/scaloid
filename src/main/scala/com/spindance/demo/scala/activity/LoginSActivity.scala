@@ -9,7 +9,9 @@ import org.scaloid.common._
 import scala.concurrent.Future
 import AndroidExecutionContext.exec
 
-
+/**
+ * Demo login - Scaloid version
+ */
 class LoginSActivity extends SActivity {
 
   onCreate {
@@ -17,21 +19,31 @@ class LoginSActivity extends SActivity {
       SImageView().fill.scaleType(ScaleType.CENTER_CROP).imageResource(R.drawable.nyc)
       this += new SVerticalLayout {
         SImageView().<<.wrap.marginBottom(40 dip).marginTop(40 dip).Gravity(Gravity.CENTER_HORIZONTAL).>>.setImageResource(R.drawable.logo)
-        val mEmail = SEditText().<<.margin(10 dip).>>.inputType(TEXT_EMAIL_ADDRESS).hint(R.string.email)
-        val mPassword = SEditText().<<.margin(10 dip).>>.inputType(TEXT_PASSWORD).hint(R.string.password)
-        SButton(R.string.login, loginPressed(mEmail.text.toString, mPassword.text.toString))
+        val email = SEditText().<<.margin(10 dip).>>.inputType(TEXT_EMAIL_ADDRESS).hint(R.string.email)
+        val password = SEditText().<<.margin(10 dip).>>.inputType(TEXT_PASSWORD).hint(R.string.password)
+        SButton(R.string.login, loginPressed(email.text.toString, password.text.toString))
           .<<.wrap.marginRight(40 dip).marginLeft(40 dip).Gravity(Gravity.CENTER_HORIZONTAL).>>.padding(30 dip, 0, 30 dip, 0).background(R.drawable.bg_selector)
       }.<<.Gravity(Gravity.CENTER).>>.padding(30 dip)
     }
+
+    longToast(R.string.login_intro_msg)
   }
 
   def loginPressed(uname:String, pass:String) = {
     val dlg = ProgressDialog.show(this, null, getString(R.string.busy_login), true, true)
 
-    Future {
-      val result = performLogin
-      dlg.dismiss()
-      startActivity(SIntent[TodoListSActivity])
+    val f:Future[Unit] = Future {
+      performLogin
+    }
+
+    f.onSuccess {
+      case _ => dlg.dismiss
+        startActivity(SIntent[TodoListSActivity])
+        finish
+    }
+    f.onFailure {
+      case t => dlg.dismiss
+                toast("Failure: " + t.getMessage)
     }
   }
 

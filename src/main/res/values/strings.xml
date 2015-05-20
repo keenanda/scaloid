@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string name="app_name">SpinDance scaloid demo</string>
+	<string name="goto_java">Java demo</string>
+	<string name="goto_scaloid">Scaloid demo</string>
+	<string name="login_title_java">Login - Java</string>
+	<string name="login_title_scaloid">Login - Scaloid</string>
 	<string name="password">Password</string>
 	<string name="email">Email</string>
 	<string name="login">Login</string>
 	<string name="busy_login">Logging in...</string>
 	<string name="dummy_login_url">http://urlecho.appspot.com/echo?status=200&amp;Content-Type=text%2Fhtml&amp;body=Successful%20login!</string>
+    <string name="login_intro_msg">No real login required, click \'Login\' with any email and password</string>
 
 	<string name="sort_by">Sort by:</string>
 	<string name="due_date">Due date</string>

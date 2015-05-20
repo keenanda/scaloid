@@ -6,7 +6,7 @@ import java.util.{Calendar, GregorianCalendar, Date}
 import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
 import android.text.TextUtils
-import android.view.Gravity
+import android.view.{MenuItem, Gravity}
 import android.widget.DatePicker
 import com.spindance.demo.scala.data.{TodoSTask, TodoSManager}
 import org.scaloid.common._
@@ -46,9 +46,20 @@ class TodoItemSActivity extends SActivity {
 
     mTask = TodoSManager.getTask(getIntent.getIntExtra("task_id", -1))
 
+    getActionBar.setDisplayHomeAsUpEnabled(true)
+
     initView
   }
 
+  override def onOptionsItemSelected(item: MenuItem): Boolean = {
+    item.getItemId match {
+      case android.R.id.home =>
+        finish
+        return true
+      case _ =>
+        return super.onOptionsItemSelected(item)
+    }
+  }
 
   def dueDatePressed = {
     val cal: GregorianCalendar = new GregorianCalendar
@@ -83,7 +94,7 @@ class TodoItemSActivity extends SActivity {
     }
   }
 
-  private val dateSelected: OnDateSetListener =  new OnDateSetListener {
+  private val dateSelected: OnDateSetListener = new OnDateSetListener {
     override def onDateSet(view: DatePicker, year: Int, monthOfYear: Int, dayOfMonth: Int): Unit = {
       val cal: GregorianCalendar = new GregorianCalendar
       cal.set(Calendar.YEAR, year)

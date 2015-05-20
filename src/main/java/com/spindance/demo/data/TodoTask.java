@@ -6,9 +6,9 @@ public class TodoTask {
     private String mTaskName;
     private int mPriority;
     private Date mDueDate;
-    private boolean mCompleted;
     private int mId;
 
+    // counter to create unique ids as we create tasks
     private static int mIdCounter = 0;
 
     public TodoTask(String taskName, int priority, Date dueDate) {
@@ -40,14 +40,6 @@ public class TodoTask {
 
     public void setDueDate(Date dueDate) {
         mDueDate = dueDate;
-    }
-
-    public boolean isCompleted() {
-        return mCompleted;
-    }
-
-    public void setCompleted(boolean b) {
-        mCompleted = b;
     }
 
     public int getId() {

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -17,6 +18,9 @@ import com.android.volley.toolbox.Volley;
 
 import com.spindance.demo.R;
 
+/**
+ * Demo login - Java version
+ */
 public class LoginActivity extends Activity {
     private EditText mEmailText;
     private EditText mPasswordText;
@@ -37,6 +41,8 @@ public class LoginActivity extends Activity {
                 loginClicked();
             }
         });
+
+        Toast.makeText(this, R.string.login_intro_msg, Toast.LENGTH_LONG).show();
     }
 
 
@@ -58,6 +64,8 @@ public class LoginActivity extends Activity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        dlg.dismiss();
+                        Toast.makeText(LoginActivity.this, "Failed: " + error.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 });
 

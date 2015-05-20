@@ -13,6 +13,7 @@ public class TodoManager {
     private static List<TodoTask> mTodoList = new ArrayList<TodoTask>();
 
     static {
+        // Create some dummy tasks to start with
         mTodoList.add(new TodoTask("Grocery shopping", 2, daysFromToday(3)));
         mTodoList.add(new TodoTask("Mow lawn", 1, daysFromToday(5)));
         mTodoList.add(new TodoTask("Do taxes", 3, daysFromToday(2)));
@@ -35,7 +36,6 @@ public class TodoManager {
     }
 
     private static Date daysFromToday(int days) {
-        long dt = System.currentTimeMillis() + 1000 * 60 * 60 * 24 * days;
-        return new Date(dt);
+        return new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 24 * days);
     }
 }
