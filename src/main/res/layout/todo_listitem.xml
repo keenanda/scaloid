@@ -6,7 +6,6 @@
     android:background="@drawable/listitem_selector"
     android:padding="@dimen/layout_padding" >
 
-
     <View
         android:id="@+id/priority"
         android:layout_width="30dp"

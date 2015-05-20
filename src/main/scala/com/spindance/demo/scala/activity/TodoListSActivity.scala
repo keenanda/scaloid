@@ -28,7 +28,8 @@ class TodoListSActivity extends SActivity with OnItemClickListener {
         STextView(R.string.sort_by).wrap
         mSortBy = SSpinner().wrap
       }.padding(0, 0, 0, 10 dip).orientation(HORIZONTAL)
-      mListView = SListView().backgroundResource(R.color.white).fw.dividerHeight(1 dip).divider(R.color.black).wrap.choiceMode(AbsListView.CHOICE_MODE_SINGLE)
+      mListView = SListView().fw.backgroundResource(R.color.white).divider(R.color.black)
+                             .dividerHeight(1 dip).choiceMode(AbsListView.CHOICE_MODE_SINGLE)
     }.padding(pad).backgroundResource(R.color.background)
 
 
@@ -93,15 +94,6 @@ class TodoListSActivity extends SActivity with OnItemClickListener {
       result.findViewById(R.id.due_date).asInstanceOf[TextView].setText(mDateFormat.format(mTaskList(position).dueDate))
       result.findViewById(R.id.priority).getBackground.setLevel(mTaskList(position).priority)
       result
-
-//    //  implicit val ctx = parent.getContext
-//      val view = new SLinearLayout {
-//        val name = STextView("Grocery shopping").<<(0 dip, WRAP_CONTENT).>>.<<.Weight(5.0f).>>.textColor(R.color.black).gravity(Gravity.CENTER_VERTICAL).lines(2).padding(0, 10 dip, 0, 10 dip).textSize(20 sp)
-//        val due = STextView("June 6, 2015").<<(0 dip, WRAP_CONTENT).>>.<<.Weight(2.0f).Gravity(Gravity.CENTER).>>.textColor(R.color.black)
-//        due.setText(mDateFormat.format(mTaskList(position).dueDate))
-//        name.setText(mTaskList(position).taskName)
-//      }.padding(10 dip).backgroundResource(R.drawable.listitem_selector)
-//      view
     }
 
     def getCount(): Int = mTaskList.size
