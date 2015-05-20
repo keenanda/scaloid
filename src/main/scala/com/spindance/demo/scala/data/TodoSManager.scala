@@ -22,12 +22,7 @@ object TodoSManager {
   }
 
   def getTask(id: Int): TodoSTask = {
-    for (t <- taskList) {
-      if (t.id == id) {
-        return t
-      }
-    }
-    null
+    taskList.find(_.id == id).getOrElse(null)
   }
 
   private def daysFromToday(days: Int): Date = {
