@@ -14,7 +14,7 @@ class LoginSActivity extends SActivity {
 
   onCreate {
     contentView = new SFrameLayout {
-      SImageView().<<.fill.>>.scaleType(ScaleType.CENTER_CROP).imageResource(R.drawable.nyc)
+      SImageView().fill.scaleType(ScaleType.CENTER_CROP).imageResource(R.drawable.nyc)
       this += new SVerticalLayout {
         SImageView().<<.wrap.marginBottom(40 dip).marginTop(40 dip).Gravity(Gravity.CENTER_HORIZONTAL).>>.setImageResource(R.drawable.logo)
         val mEmail = SEditText().<<.margin(10 dip).>>.inputType(TEXT_EMAIL_ADDRESS).hint(R.string.email)

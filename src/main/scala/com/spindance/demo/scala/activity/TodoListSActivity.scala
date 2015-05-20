@@ -10,12 +10,12 @@ import com.spindance.demo.R
 
 class TodoListSActivity extends SActivity {
 
-  var sortBy:SSpinner = null
-  var listView:SListView = null
-  var listAdapter: TodoTaskAdapter = null
+  var mSortBy:SSpinner = null
+  var mListView:SListView = null
+  var mListAdapter: TodoTaskAdapter = null
 
   private val mDateFormat: DateFormat = DateFormat.getDateInstance
-  private var taskList: Array[TodoSTask] = Array()
+  private var mTaskList: Array[TodoSTask] = Array()
 
   onCreate {
 
@@ -24,18 +24,18 @@ class TodoListSActivity extends SActivity {
     contentView = new SVerticalLayout {
       this += new SLinearLayout {
         STextView(R.string.sort_by).wrap
-        sortBy = SSpinner().wrap
+        mSortBy = SSpinner().wrap
       }.padding(0, 0, 0, 10 dip).orientation(HORIZONTAL)
-      listView = SListView().backgroundResource(R.color.white).fw.dividerHeight(1 dip).divider(R.color.black).wrap.choiceMode(AbsListView.CHOICE_MODE_SINGLE)
+      mListView = SListView().backgroundResource(R.color.white).fw.dividerHeight(1 dip).divider(R.color.black).wrap.choiceMode(AbsListView.CHOICE_MODE_SINGLE)
     }.padding(pad).backgroundResource(R.color.background)
 
 
     val adapter = SArrayAdapter(getResources.getStringArray(R.array.sort_options)).dropDownStyle(_.textSize(20 dip).padding(15 dip))
-    sortBy.setAdapter(adapter)
-    sortBy.onItemSelected(sortList)
+    mSortBy.setAdapter(adapter)
+    mSortBy.onItemSelected(sortList)
 
-    listAdapter = new TodoTaskAdapter
-    listView.setAdapter(listAdapter)
+    mListAdapter = new TodoTaskAdapter
+    mListView.setAdapter(mListAdapter)
   }
 
   onResume {
@@ -59,15 +59,15 @@ class TodoListSActivity extends SActivity {
 
   def sortList = {
 
-    taskList = TodoSManager.getTodoList
-    if (sortBy.getSelectedItemPosition == 0) {
-      taskList = taskList.sortBy(_.dueDate)
+    mTaskList = TodoSManager.getTodoList
+    if (mSortBy.getSelectedItemPosition == 0) {
+      mTaskList = mTaskList.sortBy(_.dueDate)
     }
     else {
-      taskList = taskList.sortBy(_.priority)
+      mTaskList = mTaskList.sortBy(_.priority)
     }
 
-    listAdapter.notifyDataSetChanged()
+    mListAdapter.notifyDataSetChanged()
   }
 
   def showNewTask = {
@@ -81,17 +81,16 @@ class TodoListSActivity extends SActivity {
       if (result == null)
         result = LayoutInflater.from(parent.getContext).inflate(R.layout.todo_listitem, null)
 
-      result.findViewById(R.id.task_name).asInstanceOf[TextView].setText(taskList(position).taskName)
-      result.findViewById(R.id.due_date).asInstanceOf[TextView].setText(mDateFormat.format(taskList(position).dueDate))
-      result.findViewById(R.id.priority).getBackground.setLevel(taskList(position).priority)
+      result.findViewById(R.id.task_name).asInstanceOf[TextView].setText(mTaskList(position).taskName)
+      result.findViewById(R.id.due_date).asInstanceOf[TextView].setText(mDateFormat.format(mTaskList(position).dueDate))
+      result.findViewById(R.id.priority).getBackground.setLevel(mTaskList(position).priority)
       result
     }
 
-    def getCount(): Int = taskList.size
+    def getCount(): Int = mTaskList.size
 
-    def getItem(position: Int): AnyRef = taskList(position)
+    def getItem(position: Int): AnyRef = mTaskList(position)
 
     def getItemId(position: Int): Long = position
   }
-
 }

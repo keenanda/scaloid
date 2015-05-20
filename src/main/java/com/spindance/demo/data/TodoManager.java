@@ -5,6 +5,9 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Class for managing list of TodoTasks. They are just stored in memory with no persistence
+ */
 public class TodoManager {
 
     private static List<TodoTask> mTodoList = new ArrayList<TodoTask>();
