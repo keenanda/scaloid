@@ -38,7 +38,7 @@ public class LoginActivity extends Activity {
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loginClicked();
+                performLogin(mEmailText.getText().toString(), mPasswordText.getText().toString());
             }
         });
 
@@ -46,7 +46,7 @@ public class LoginActivity extends Activity {
     }
 
 
-    private void loginClicked() {
+    private void performLogin(String email, String password) {
         RequestQueue queue = Volley.newRequestQueue(this);
         String url = getString(R.string.dummy_login_url);
 

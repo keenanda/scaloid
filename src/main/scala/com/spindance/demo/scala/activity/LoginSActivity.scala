@@ -21,7 +21,7 @@ class LoginSActivity extends SActivity {
         SImageView().<<.wrap.marginBottom(40 dip).marginTop(40 dip).Gravity(Gravity.CENTER_HORIZONTAL).>>.setImageResource(R.drawable.logo)
         val email = SEditText().<<.margin(10 dip).>>.inputType(TEXT_EMAIL_ADDRESS).hint(R.string.email)
         val password = SEditText().<<.margin(10 dip).>>.inputType(TEXT_PASSWORD).hint(R.string.password)
-        SButton(R.string.login, loginPressed(email.text.toString, password.text.toString))
+        SButton(R.string.login, performLogin(email.text.toString, password.text.toString))
           .<<.wrap.marginRight(40 dip).marginLeft(40 dip).Gravity(Gravity.CENTER_HORIZONTAL).>>.padding(30 dip, 0, 30 dip, 0).background(R.drawable.bg_selector)
       }.<<.Gravity(Gravity.CENTER).>>.padding(30 dip)
     }
@@ -29,11 +29,12 @@ class LoginSActivity extends SActivity {
     longToast(R.string.login_intro_msg)
   }
 
-  def loginPressed(uname:String, pass:String) = {
+  def performLogin(uname:String, pass:String) = {
     val dlg = ProgressDialog.show(this, null, getString(R.string.busy_login), true, true)
 
     val f:Future[Unit] = Future {
-      performLogin
+      Thread.sleep(1000)   // fake some network delay
+      scala.io.Source.fromURL(getString(R.string.dummy_login_url)).mkString
     }
 
     f.onSuccess {
@@ -45,10 +46,5 @@ class LoginSActivity extends SActivity {
       case t => dlg.dismiss
                 toast("Failure: " + t.getMessage)
     }
-  }
-
-  def performLogin: String = {
-    Thread.sleep(1000)   // fake some network delay
-    scala.io.Source.fromURL(getString(R.string.dummy_login_url)).mkString
   }
 }
