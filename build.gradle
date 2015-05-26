@@ -1,7 +1,6 @@
 buildscript {
     repositories {
         mavenCentral()
-   //     maven { url  "http://dl.bintray.com/stanch/maven" }
     }
 
     dependencies {
@@ -49,9 +48,5 @@ android {
 dependencies {
     compile "org.scala-lang:scala-library:2.11.6"
     compile "org.scaloid:scaloid_2.11:4.0-RC1+"
-    compile ("org.macroid:macroid_2.11:2.0.0-M3") {
-        exclude module: 'scala-library'
-    }
- //   compile "org.macroid:macroid-viewable_2.11:2.0.0-M3"
     compile files ('libs/volley.jar')
 }
