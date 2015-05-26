@@ -1,7 +1,8 @@
-package com.spindance.demo.scala.activity
+package com.spindance.demo.scaloid.activity
 
 import com.spindance.demo.R
 import com.spindance.demo.activity.LoginActivity
+import com.spindance.demo.macroid.activity.LoginMActivity
 import org.scaloid.common._
 
 /**
@@ -14,6 +15,7 @@ class LaunchDemoSActivity extends SActivity {
 
       SButton(R.string.goto_java, loginJava)
       SButton(R.string.goto_scaloid, loginScala)
+      SButton(R.string.goto_macroid, loginMacroid)
     } padding 20.dip
   }
 
@@ -23,6 +25,10 @@ class LaunchDemoSActivity extends SActivity {
 
   def loginScala = {
     startActivity(SIntent[LoginSActivity])
+  }
+
+  def loginMacroid = {
+    startActivity(SIntent[LoginMActivity])
   }
 }
 

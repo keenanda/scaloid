@@ -1,4 +1,4 @@
-package com.spindance.demo.scala.activity
+package com.spindance.demo.scaloid.activity
 
 import android.os.AsyncTask
 

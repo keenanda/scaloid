@@ -8,7 +8,7 @@
 
     <application android:label="@string/app_name"
         android:icon="@drawable/ic_launcher">
-        <activity android:name="com.spindance.demo.scala.activity.LaunchDemoSActivity"
+        <activity android:name="com.spindance.demo.scaloid.activity.LaunchDemoSActivity"
                   android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,13 +22,17 @@
         </activity>
         <activity android:name="com.spindance.demo.activity.TodoItemActivity">
         </activity>
-        <activity android:name="com.spindance.demo.scala.activity.LoginSActivity"
+        <activity android:name="com.spindance.demo.scaloid.activity.LoginSActivity"
             android:label="@string/login_title_scaloid">
         </activity>
-        <activity android:name="com.spindance.demo.scala.activity.TodoListSActivity"
+        <activity android:name="com.spindance.demo.scaloid.activity.TodoListSActivity"
             android:label="@string/todo_title">
         </activity>
-        <activity android:name="com.spindance.demo.scala.activity.TodoItemSActivity">
+        <activity android:name="com.spindance.demo.scaloid.activity.TodoItemSActivity">
+        </activity>
+
+        <activity android:name="com.spindance.demo.macroid.activity.LoginMActivity"
+            android:label="@string/login_title_macroid">
         </activity>
 
     </application>

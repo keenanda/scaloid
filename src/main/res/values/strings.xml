@@ -3,8 +3,10 @@
 	<string name="app_name">SpinDance scaloid demo</string>
 	<string name="goto_java">Java demo</string>
 	<string name="goto_scaloid">Scaloid demo</string>
-	<string name="login_title_java">Login - Java</string>
-	<string name="login_title_scaloid">Login - Scaloid</string>
+	<string name="goto_macroid">Macroid demo</string>
+	<string name="login_title_java">Demo - Java</string>
+	<string name="login_title_scaloid">Demo - Scaloid</string>
+	<string name="login_title_macroid">Demo - Macroid</string>
 	<string name="password">Password</string>
 	<string name="email">Email</string>
 	<string name="login">Login</string>
