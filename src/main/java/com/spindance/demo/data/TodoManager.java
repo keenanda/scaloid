@@ -3,6 +3,7 @@ package com.spindance.demo.data;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -33,6 +34,15 @@ public class TodoManager {
                 return t;
         }
         return null;
+    }
+
+    public static void deleteTask(int id) {
+        for (Iterator<TodoTask> iter = mTodoList.iterator(); iter.hasNext(); ) {
+            if (iter.next().getId() == id) {
+                iter.remove();;
+                return;
+            }
+        }
     }
 
     private static Date daysFromToday(int days) {

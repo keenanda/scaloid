@@ -25,6 +25,10 @@ object TodoSManager {
     taskList.find(_.id == id).getOrElse(null)
   }
 
+  def deleteTask(id: Int): Unit = {
+    taskList = taskList.filter( _.id != id)
+  }
+
   private def daysFromToday(days: Int): Date = {
     return new Date(System.currentTimeMillis + 1000 * 60 * 60 * 24 * days)
   }

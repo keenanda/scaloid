@@ -2,8 +2,10 @@ package com.spindance.demo.activity;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,6 +34,7 @@ public class TodoItemActivity extends Activity {
     private Spinner mPriority;
     private Button mDueDate;
     private Button mSave;
+    private Button mDelete;
 
     public static Intent newCreateIntent(Context ctx) {
         Intent intent = new Intent(ctx, TodoItemActivity.class);
@@ -53,6 +56,7 @@ public class TodoItemActivity extends Activity {
         mPriority = (Spinner) findViewById(R.id.priority);
         mName = (EditText) findViewById(R.id.task_name);
         mSave = (Button) findViewById(R.id.save_button);
+        mDelete = (Button) findViewById(R.id.delete_button);
 
         mTask = TodoManager.getTask(getIntent().getIntExtra(EXTRA_TASK, -1));
         initView();
@@ -81,10 +85,12 @@ public class TodoItemActivity extends Activity {
             mDueDate.setText(SimpleDateFormat.getDateInstance().format(mTask.getDueDate()));
         } else {
             mDueDate.setText(SimpleDateFormat.getDateInstance().format(new Date()));
+            mDelete.setVisibility(View.GONE);
         }
 
         mSave.setOnClickListener(saveClicked);
         mDueDate.setOnClickListener(dateClicked);
+        mDelete.setOnClickListener(deleteClicked);
     }
 
 
@@ -105,6 +111,32 @@ public class TodoItemActivity extends Activity {
                 Log.e(TodoItemActivity.class.getName(), e.getMessage());
             }
             finish();
+        }
+    };
+
+    private View.OnClickListener deleteClicked = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            new AlertDialog.Builder(TodoItemActivity.this)
+                    .setMessage(R.string.delete_confirmation)
+                    .setPositiveButton(R.string.ok, deleteConfirmed)
+                    .setNegativeButton(R.string.cancel, cancelDelete)
+                    .show();
+        }
+    };
+
+    private DialogInterface.OnClickListener deleteConfirmed = new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            TodoManager.deleteTask(mTask.getId());
+            finish();
+        }
+    };
+
+    private DialogInterface.OnClickListener cancelDelete = new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            dialog.dismiss();
         }
     };
 

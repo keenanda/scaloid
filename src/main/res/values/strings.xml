@@ -23,6 +23,10 @@
 	<string name="create_task">Create Task</string>
     <string name="edit_task">Edit Task</string>
 	<string name="save">Save</string>
+	<string name="delete">Delete</string>
+	<string name="delete_confirmation">Delete this task?</string>
+	<string name="ok">OK</string>
+	<string name="cancel">Cancel</string>
 
 	<array name="sort_options">
 		<item>@string/due_date</item>
