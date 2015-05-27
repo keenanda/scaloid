@@ -2,7 +2,7 @@ package com.spindance.demo.scaloid.activity
 
 import java.text.DateFormat
 
-import android.content.Intent
+import android.content.{Context, Intent}
 import android.view._
 import android.widget.AdapterView.OnItemClickListener
 import android.widget._
@@ -17,7 +17,6 @@ class TodoListSActivity extends SActivity with OnItemClickListener {
 
   var mSortBy:SSpinner = null
   var mListView:SListView = null
-  var mListAdapter: TodoTaskAdapter = null
 
   private val mDateFormat: DateFormat = DateFormat.getDateInstance
   private var mTaskList: Array[TodoSTask] = Array()
@@ -40,8 +39,6 @@ class TodoListSActivity extends SActivity with OnItemClickListener {
     mSortBy.setAdapter(adapter)
     mSortBy.onItemSelected(sortList)
 
-    mListAdapter = new TodoTaskAdapter
-    mListView.setAdapter(mListAdapter)
     mListView.setOnItemClickListener(this)
   }
 
@@ -74,7 +71,7 @@ class TodoListSActivity extends SActivity with OnItemClickListener {
       mTaskList = mTaskList.sortWith((lhs, rhs) => lhs.priority > rhs.priority)
     }
 
-    mListAdapter.notifyDataSetChanged()
+    mListView.setAdapter(new TodoTaskAdapter(mTaskList))
   }
 
   def showNewTask = {
@@ -86,24 +83,17 @@ class TodoListSActivity extends SActivity with OnItemClickListener {
     new Intent().put(task_id).start[TodoItemSActivity]
   }
 
-  class TodoTaskAdapter extends BaseAdapter {
-
-    def getView(position:Int, convertView: View, parent: ViewGroup): View = {
+  class TodoTaskAdapter(itemArray: Array[TodoSTask]) extends ArrayAdapter[TodoSTask](ctx, 0, itemArray) {
+    override def getView(position:Int, convertView: View, parent: ViewGroup): View = {
       var result = convertView
       if (result == null)
         result = LayoutInflater.from(parent.getContext).inflate(R.layout.todo_listitem, null)
 
-      result.find[TextView](R.id.task_name).setText(mTaskList(position).taskName)
-      result.find[TextView](R.id.due_date).setText(mDateFormat.format(mTaskList(position).dueDate))
-      result.find[View](R.id.priority).getBackground.setLevel(mTaskList(position).priority)
+      result.find[TextView](R.id.task_name).setText(getItem(position).taskName)
+      result.find[TextView](R.id.due_date).setText(mDateFormat.format(getItem(position).dueDate))
+      result.find[View](R.id.priority).getBackground.setLevel(getItem(position).priority)
 
       result
     }
-
-    def getCount(): Int = mTaskList.size
-
-    def getItem(position: Int): AnyRef = mTaskList(position)
-
-    def getItemId(position: Int): Long = position
   }
 }
