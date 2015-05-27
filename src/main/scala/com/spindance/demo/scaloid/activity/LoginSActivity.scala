@@ -10,7 +10,7 @@ import scala.concurrent.Future
 import AndroidExecutionContext.exec
 
 /**
- * Demo login - Scaloid version
+ * Scaloid Activity for Login to task list demo app
  */
 class LoginSActivity extends SActivity {
 

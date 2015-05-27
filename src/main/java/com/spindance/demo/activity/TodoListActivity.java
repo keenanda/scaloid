@@ -27,6 +27,9 @@ import com.spindance.demo.data.TodoTask;
 
 import com.spindance.demo.R;
 
+/**
+ * Standard Java Activity for viewing list of TodoTasks
+ */
 public class TodoListActivity extends ListActivity {
     private TodoListAdapter mAdapter;
     private Spinner mSortSpinner;

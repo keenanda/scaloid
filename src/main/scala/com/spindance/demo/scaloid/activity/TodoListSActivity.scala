@@ -10,6 +10,9 @@ import com.spindance.demo.scala.data.{TodoSManager, TodoSTask}
 import org.scaloid.common._
 import com.spindance.demo.R
 
+/**
+ * Scaloid Activity for viewing list of TodoTasks
+ */
 class TodoListSActivity extends SActivity with OnItemClickListener {
 
   var mSortBy:SSpinner = null
@@ -90,9 +93,10 @@ class TodoListSActivity extends SActivity with OnItemClickListener {
       if (result == null)
         result = LayoutInflater.from(parent.getContext).inflate(R.layout.todo_listitem, null)
 
-      result.findViewById(R.id.task_name).asInstanceOf[TextView].setText(mTaskList(position).taskName)
-      result.findViewById(R.id.due_date).asInstanceOf[TextView].setText(mDateFormat.format(mTaskList(position).dueDate))
-      result.findViewById(R.id.priority).getBackground.setLevel(mTaskList(position).priority)
+      result.find[TextView](R.id.task_name).setText(mTaskList(position).taskName)
+      result.find[TextView](R.id.due_date).setText(mDateFormat.format(mTaskList(position).dueDate))
+      result.find[View](R.id.priority).getBackground.setLevel(mTaskList(position).priority)
+
       result
     }
 

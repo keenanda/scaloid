@@ -26,6 +26,9 @@ import com.spindance.demo.data.TodoTask;
 
 import com.spindance.demo.R;
 
+/**
+ * Standard Java Activity for adding or editing a TodoTask
+ */
 public class TodoItemActivity extends Activity {
     public static final String EXTRA_TASK = "TodoItem.Task";
 

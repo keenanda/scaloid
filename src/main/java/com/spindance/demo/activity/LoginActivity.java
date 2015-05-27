@@ -19,7 +19,7 @@ import com.android.volley.toolbox.Volley;
 import com.spindance.demo.R;
 
 /**
- * Demo login - Java version
+ * Standard Java Activity for Login to task list demo app
  */
 public class LoginActivity extends Activity {
     private EditText mEmailText;
@@ -30,7 +30,7 @@ public class LoginActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.login);
+        setContentView(R.layout.activity_login);
         mEmailText = (EditText)findViewById(R.id.form_login_email);
         mPasswordText = (EditText)findViewById(R.id.form_login_password);
         mLoginButton = (Button)findViewById(R.id.form_login_button);
